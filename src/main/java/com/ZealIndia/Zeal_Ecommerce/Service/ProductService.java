@@ -1,5 +1,7 @@
 package com.ZealIndia.Zeal_Ecommerce.Service;
 
-public interface ProductService {
+import com.ZealIndia.Zeal_Ecommerce.DTO.ProductDetailsDTO;
 
+public interface ProductService {
+	ProductDetailsDTO getProductDetails(Long productId);
 }
