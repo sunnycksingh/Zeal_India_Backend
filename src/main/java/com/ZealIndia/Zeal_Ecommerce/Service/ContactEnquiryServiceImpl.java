@@ -13,12 +13,19 @@ public class ContactEnquiryServiceImpl implements ContactEnquiryService
 {
 	
 	private ContactEnquiryRepository enquiryRepository;
-	
+    private EmailService emailService;
+    
+    
 	@Override
 	public ContactEnquiry saveEnquiry(ContactEnquiry contactEnquiry) 
 	{
 		System.out.println("Entered >> ContactEnquiryServiceImpl >> saveEnquiry");
-		return enquiryRepository.save(contactEnquiry);
+		ContactEnquiry saved = enquiryRepository.save(contactEnquiry);
+		
+		//Send Email after saving values in database
+		emailService.sendEnquiryEmail(saved);
+		return saved;		
+		
 	}
 
 }
